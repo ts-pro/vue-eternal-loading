@@ -32,8 +32,6 @@ import {
 } from './helpers/scroll/scroll';
 import { LoadAction, LoadPayload, Position, State } from './helpers/type/type';
 
-console.log('VueEternalLoading imported');
-
 export default defineComponent({
   name: 'VueEternalLoading',
 

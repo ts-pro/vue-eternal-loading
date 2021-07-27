@@ -1,10 +1,14 @@
 module.exports = {
-  title: 'Vue eternal loading',
+  title: 'vue-eternal-loading',
   description: 'Infinity loading component vue3 projects.',
   base: '/vue-eternal-loading/',
+  head: [
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "../assets/logo.png"}],
+  ],
   themeConfig: {
     repo: 'ts-pro/vue-eternal-loading',
     docsDir: 'docs',
+    logo: '../assets/logo.png',
 
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
