@@ -29,7 +29,7 @@ async function load({ loaded }) {
 
 Here you can scroll down to get more content. When you reach the end, you will see "No more.". All texts in this example is on defaults.
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/pe58wszL/78/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/pe58wszL/78/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ## TypeScript
 ```vue

@@ -3,12 +3,12 @@ module.exports = {
   description: 'Infinity loading component vue3 projects.',
   base: '/vue-eternal-loading/',
   head: [
-    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "../assets/logo.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/logo.png"}],
   ],
   themeConfig: {
     repo: 'ts-pro/vue-eternal-loading',
     docsDir: 'docs',
-    logo: '../assets/logo.png',
+    logo: '/logo.png',
 
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
@@ -48,11 +48,11 @@ function getGuideSidebar() {
       text: 'Examples',
       children: [
         { text: 'Loading states', link: '/loading-states' },
-        { text: 'Styling with slots', link: '/guide/frontmatter' },
-        { text: 'Manually change states', link: '/guide/frontmatter' },
-        { text: 'Initial loading', link: '/guide/frontmatter' },
-        { text: 'Preloaded data', link: '/guide/frontmatter' },
-        { text: 'Loader positions', link: '/guide/frontmatter' },
+        { text: 'Styling with slots', link: '/styling-with-slots' },
+        { text: 'Manually change states', link: '/manually-change-states' },
+        { text: 'Reset state', link: '/reset-state' },
+        { text: 'Preloaded data', link: '/preloaded-data' },
+        { text: 'Loader positions', link: '/loader-positions' },
       ]
     }
   ]
