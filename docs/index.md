@@ -1,3 +1,3 @@
 # Introduction
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/pe58wszL/73/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+**Vue-eternal-loading** is a simple component for creating infinity scroll pagination. It is written on TypeScript for Vue 3.

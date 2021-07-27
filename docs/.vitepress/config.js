@@ -36,14 +36,14 @@ function getGuideSidebar() {
       text: 'Getting started',
       children: [
         { text: 'Introduction', link: '/' },
-        { text: 'Installation', link: '/test' },
-        { text: 'Simple usage', link: '/test' },
+        { text: 'Installation', link: '/installation' },
+        { text: 'Simple usage', link: '/simple-usage' },
       ]
     },
     {
       text: 'Examples',
       children: [
-        { text: 'Loading states', link: '/guide/frontmatter' },
+        { text: 'Loading states', link: '/loading-states' },
         { text: 'Styling with slots', link: '/guide/frontmatter' },
         { text: 'Manually change states', link: '/guide/frontmatter' },
         { text: 'Initial loading', link: '/guide/frontmatter' },
