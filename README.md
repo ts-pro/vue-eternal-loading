@@ -1,6 +1,6 @@
-# vue-eternal-loading
+# vue-eternal-loading [![Build Status](https://travis-ci.com/ts-pro/vue-eternal-loading.svg?branch=main)](https://travis-ci.com/ts-pro/vue-eternal-loading)
 
-Infinity loading component for Vue 3, based on [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+Infinity loading component for [Vue 3](https://v3.vuejs.org/), based on [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
 
 ### Features:
 - 4 directional ( tol / left / right / bottom)

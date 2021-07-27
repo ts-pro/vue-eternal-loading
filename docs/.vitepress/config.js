@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Vue eternal loading',
   description: 'Infinity loading component vue3 projects.',
+  base: '/vue-eternal-loading/',
   themeConfig: {
     repo: 'ts-pro/vue-eternal-loading',
     docsDir: 'docs',
