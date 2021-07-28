@@ -44,13 +44,13 @@ function load({ loaded, noMore, noResults }, { isFirstLoad }) {
 It's a good practice to handle errors in the app, and show clear feedback to a user. That's why we offer **error** state. You should set this state manually if something bad have happened in your opinion, and we need to show error message to a user. Let's set error state if we get error response from a server, and show custom error message to a user, using `#error` slot.
 
 ```html
-<vue-eternal-loading :load="load">
+<VueEternalLoading :load="load">
     <template #error>
       <div class="error">
         Oops! Looks like we've got an error.
       </div>
     </template>
-</vue-eternal-loading>
+</VueEternalLoading>
 ```
 ```js
 load({ loaded, error }) {
