@@ -3,7 +3,7 @@ module.exports = {
   description: 'Infinity loading component vue3 projects.',
   base: '/vue-eternal-loading/',
   head: [
-    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/logo.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/vue-eternal-loading/logo.png"}],
   ],
   themeConfig: {
     repo: 'ts-pro/vue-eternal-loading',

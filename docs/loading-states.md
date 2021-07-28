@@ -30,7 +30,7 @@ function load({ loaded }) {
 
 ---
 
-If we use `loading` callback with 1 param ( items count ) we can rich 2 states now: no-more, no-results. We may want to have this states to render corresponding templates. If we call `loading(0)` on our first load - we will get **no-results** state.
+If we use `loaded` callback with 1 param ( items count ) we can rich 2 states now: no-more, no-results. We may want to have this states to render corresponding templates. If we call `loaded(0)` on our first load - we will get **no-results** state.
 ```js
 function load({ loaded }) {
   // Load data from server
@@ -41,7 +41,7 @@ function load({ loaded }) {
 ```
 <iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/4gdht3ap/3/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-If we call `loading(0)` on our second+ load - we will get **no-more** state. Which means that we have loaded content before, but we reached the end now.
+If we call `loaded(0)` on our second+ load - we will get **no-more** state. Which means that we have loaded content before, but we reached the end now.
 ```js
 function load({ loaded }) {
   // Load data from server
@@ -52,7 +52,7 @@ function load({ loaded }) {
 ```
 <iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/uwapjzk8/6/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-You can admit in example above than we have 1 extra request, before we riched state `no-more`. It happens because we do not know exact page size and we can set state `no-more` only if we reach empty response. It's okay if you don't know for sure what's your page size or you may have floating items count per request. But in case when you expect exact items count per page it's good practise to pass second param to `loading` callback, where you should specify your page size. It prevents unnecessary extra request to server and set state `no-more` when we will get items count less than page size:
+You can admit in example above than we have 1 extra request, before we riched state `no-more`. It happens because we do not know exact page size and we can set state `no-more` only if we reach empty response. It's okay if you don't know for sure what's your page size or you may have floating items count per request. But in case when you expect exact items count per page it's good practise to pass second param to `loaded` callback, where you should specify your page size. It prevents unnecessary extra request to server and set state `no-more` when we will get items count less than page size:
 ```js
 const PAGE_SIZE = 5;
 
@@ -66,4 +66,4 @@ function load({ loaded }) {
 
 ---
 
-We have one more state `error` but we can't rich it automatically just using `loading` callback. It's because **vue-eternal-loading** have no idea about loading errors, and it can switch states based on information which you pass to `loading` callback and it's not enought information to set `error` state. How to set `error` state manually we will explain further in next sections.
+We have one more state `error`, but we can't rich it automatically, just using `loaded` callback. It's because **vue-eternal-loading** have no idea about loading errors, and it can switch states based on information which you pass to `loaded` and it's not enough information to set `error` state. How to set `error` state manually we will learn further in the next sections.
