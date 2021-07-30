@@ -3,13 +3,13 @@
     <slot v-if="state === 'loading'" v-bind="{ isFirstLoad }" name="loading">
       <div class="loading">Loading...</div>
     </slot>
-    <slot v-if="state === 'no-more'" name="no-more">
+    <slot v-else-if="state === 'no-more'" name="no-more">
       <div class="no-more">No more.</div>
     </slot>
-    <slot v-if="state === 'no-results'" name="no-results">
+    <slot v-else-if="state === 'no-results'" name="no-results">
       <div class="no-results">No results.</div>
     </slot>
-    <slot v-if="state === 'error'" name="error">
+    <slot v-else-if="state === 'error'" name="error">
       <div class="error">Error.</div>
     </slot>
   </div>
@@ -47,15 +47,15 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-    container: {
-      required: false,
-      type: Object as PropType<HTMLElement>,
-      default: document.documentElement,
-    },
     position: {
       required: false,
       type: String as PropType<Position>,
       default: 'default',
+    },
+    container: {
+      required: false,
+      type: Object as PropType<HTMLElement>,
+      default: document.documentElement,
     },
   },
 

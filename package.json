@@ -1,5 +1,5 @@
 {
-  "name": "vue-eternal-loading",
+  "name": "@ts-pro/vue-eternal-loading",
   "description": "Infinity loading component vue3 projects.",
   "version": "1.0.0",
   "main": "dist/vue-eternal-loading.common.js",
@@ -64,5 +64,8 @@
     "infinite loading",
     "infinite scroll",
     "vue infinite"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

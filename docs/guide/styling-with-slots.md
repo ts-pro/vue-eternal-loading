@@ -49,7 +49,7 @@ Or we can put fancy boostrap spinner:
 
 ---
 
-In the loading slot we have access to isFirstLoad data via scoped slot. This data can be used when we want to show different loader for the fist time ( e.g. skeleton loading ).
+In the loading slot we have access to `isFirstLoad` data via scoped slot. This data can be used when we want to show different loader for the fist time ( e.g. skeleton loading ).
 
 ```html
 <template>

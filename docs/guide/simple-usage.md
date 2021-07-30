@@ -2,7 +2,7 @@
 
 There is a basic example of **vue-eternal-loading** usage.
 
-When you work with vue-eternal-loading you should implement the only required prop - `load`. This callback method will be called automatically when it's time to load more data. `load` provides 2 arguments which will be described later, but for now we only need the first one.
+When you work with **vue-eternal-loading** you should implement the only required prop - `load`. This callback method will be called automatically when it's time to load more data. `load` provides 2 arguments which will be described later, for now we only need the first one.
 ```html
 <VueEternalLoading :load="load"></VueEternalLoading>
 ```
@@ -45,7 +45,7 @@ Here you can scroll down to get more content. When you reach the end, you will s
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { VueEternalLoading, LoadAction } from 'vue-eternal-loading';
+import { VueEternalLoading, LoadAction } from '@ts-pro/vue-eternal-loading';
 
 const URL = 'https://reqres.in/api/users';
 const PAGE_SIZE = 5;
@@ -99,7 +99,7 @@ export default defineComponent({
 
 <script lang="js">
 import { defineComponent, ref } from 'vue';
-import { VueEternalLoading } from 'vue-eternal-loading';
+import { VueEternalLoading } from '@ts-pro/vue-eternal-loading';
 
 const URL = 'https://reqres.in/api/users';
 const PAGE_SIZE = 5;

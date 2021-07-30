@@ -1,6 +1,6 @@
 /*!
  * 
- *         vue-eternal-loading v1.0.0
+ *         @ts-pro/vue-eternal-loading v1.0.0
  *         (c) 2021 Oleksandr Havrashenko
  *         MIT License
  *       
@@ -2777,7 +2777,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEthernalLoading/VueEternalLoading.vue?vue&type=template&id=702b6bc4
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEthernalLoading/VueEternalLoading.vue?vue&type=template&id=50f42308
 
 var _hoisted_1 = {
   class: "vue-eternal-loading",
@@ -2807,15 +2807,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     isFirstLoad: _ctx.isFirstLoad
   }), function () {
     return [_hoisted_2];
-  }) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.state === 'no-more' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-more", {
+  }) : _ctx.state === 'no-more' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-more", {
     key: 1
   }, function () {
     return [_hoisted_3];
-  }) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.state === 'no-results' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-results", {
+  }) : _ctx.state === 'no-results' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-results", {
     key: 2
   }, function () {
     return [_hoisted_4];
-  }) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.state === 'error' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "error", {
+  }) : _ctx.state === 'error' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "error", {
     key: 3
   }, function () {
     return [_hoisted_5];
@@ -2946,7 +2946,6 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
 
 
 
-console.log('VueEternalLoading imported');
 /* harmony default export */ var VueEternalLoadingvue_type_script_lang_ts = (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["defineComponent"])({
   name: 'VueEternalLoading',
   props: {
@@ -2959,15 +2958,15 @@ console.log('VueEternalLoading imported');
       type: Boolean,
       default: true
     },
-    container: {
-      required: false,
-      type: Object,
-      default: document.documentElement
-    },
     position: {
       required: false,
       type: String,
       default: 'default'
+    },
+    container: {
+      required: false,
+      type: Object,
+      default: document.documentElement
     }
   },
   setup: function setup(props, context) {

@@ -24,6 +24,7 @@ describe('VueEternalLoading', () => {
       props: {
         load(a: LoadAction, p: LoadPayload) {
           action = a;
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           payload = p;
         },
         isInitial,

@@ -2,7 +2,7 @@
 
 **vue-eternal-loading** allows changing state manually. It can be useful if we have more complex or custom logic than offers `loaded` callback.
 
-Let's write logic where we don't rely on current page size, but we can use other fields in the response ( e.g. **page**, **total_pages** ). Using those fields we know that if current page number equals total pages count - there should be **no-more**.
+Let's write logic where we don't rely on current page size, but we can use other field in the response ( e.g. **total_pages** ). Using those field we know that if current page number equals total pages count - there should be **no-more**.
 
 ```js
 function load({ loaded, noMore }) {

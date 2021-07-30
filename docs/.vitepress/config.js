@@ -11,15 +11,16 @@ module.exports = {
     logo: '/logo.png',
 
     editLinks: true,
+    docsBranch: 'main',
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: 'Last Updated',
 
     nav: [
-      { text: 'Guide', link: '/' },
+      { text: 'Guide', link: '/', activeMatch: '^/$|^/guide/' },
       {
         text: 'API Reference',
-        link: '/config/basics',
-        activeMatch: '^/config/'
+        link: '/api/props',
+        activeMatch: '^/api/'
       },
       {
         text: 'Release Notes',
@@ -28,8 +29,9 @@ module.exports = {
     ],
 
     sidebar: {
+      '/guide/': getGuideSidebar(),
       '/api/': getApiSidebar(),
-      '/': getGuideSidebar()
+      '/': getGuideSidebar(),
     }
   },
 }
@@ -40,19 +42,19 @@ function getGuideSidebar() {
       text: 'Getting started',
       children: [
         { text: 'Introduction', link: '/' },
-        { text: 'Installation', link: '/installation' },
-        { text: 'Simple usage', link: '/simple-usage' },
+        { text: 'Installation', link: '/guide/installation' },
+        { text: 'Simple usage', link: '/guide/simple-usage' },
       ]
     },
     {
       text: 'Examples',
       children: [
-        { text: 'Loading states', link: '/loading-states' },
-        { text: 'Styling with slots', link: '/styling-with-slots' },
-        { text: 'Manually change states', link: '/manually-change-states' },
-        { text: 'Reset state', link: '/reset-state' },
-        { text: 'Preloaded data', link: '/preloaded-data' },
-        { text: 'Loader positions', link: '/loader-positions' },
+        { text: 'Loading states', link: '/guide/loading-states' },
+        { text: 'Styling with slots', link: '/guide/styling-with-slots' },
+        { text: 'Manually change states', link: '/guide/manually-change-states' },
+        { text: 'Reset state', link: '/guide/reset-state' },
+        { text: 'Preloaded data', link: '/guide/preloaded-data' },
+        { text: 'Loader positions', link: '/guide/loader-positions' },
       ]
     }
   ]
@@ -61,16 +63,12 @@ function getGuideSidebar() {
 function getApiSidebar() {
   return [
     {
-      text: 'App Config',
-      children: [{ text: 'Basics', link: '/config/basics' }]
-    },
-    {
-      text: 'Theme Config',
+      text: 'API',
       children: [
-        { text: 'Homepage', link: '/config/homepage' },
-        { text: 'Algolia Search', link: '/config/algolia-search' },
-        { text: 'Carbon Ads', link: '/config/carbon-ads' }
+        { text: 'Props', link: '/api/props' },
+        { text: 'Slots', link: '/api/slots' },
+        { text: 'Types', link: '/api/types' },
       ]
-    }
+    },
   ]
 }
