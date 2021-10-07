@@ -55,6 +55,8 @@ function getGuideSidebar() {
         { text: 'Reset state', link: '/guide/reset-state' },
         { text: 'Preloaded data', link: '/guide/preloaded-data' },
         { text: 'Loader positions', link: '/guide/loader-positions' },
+        { text: 'Loader margin', link: '/guide/loader-margin' },
+        { text: 'Retry loading', link: '/guide/retry-loading' },
       ]
     }
   ]

@@ -19,7 +19,7 @@ describe('VueEternalLoading', () => {
   let action: LoadAction;
   let payload: LoadPayload;
 
-  function getComponent(isInitial = true) {
+  function getComponent(isInitial = true, container?: HTMLElement | null) {
     return shallowMount(VueEternalLoading, {
       props: {
         load(a: LoadAction, p: LoadPayload) {
@@ -28,6 +28,7 @@ describe('VueEternalLoading', () => {
           payload = p;
         },
         isInitial,
+        container,
       },
       slots: {
         loading: 'STATE_LOADING',
@@ -238,5 +239,19 @@ describe('VueEternalLoading', () => {
       container,
       undefined
     );
+  });
+
+  test('container is null', async () => {
+    const wrapper = getComponent(true, null);
+    expect(observe).not.toHaveBeenCalled();
+    expect(unobserve).not.toHaveBeenCalled();
+
+    await wrapper.setProps({ container: document.documentElement });
+    expect(observe).toHaveBeenCalledTimes(1);
+    expect(unobserve).not.toHaveBeenCalled();
+
+    await wrapper.setProps({ container: document.body });
+    expect(observe).toHaveBeenCalledTimes(2);
+    expect(unobserve).toHaveBeenCalledTimes(1);
   });
 });
