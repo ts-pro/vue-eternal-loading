@@ -1,7 +1,7 @@
-export { default as VueEternalLoading } from './components/VueEthernalLoading/VueEternalLoading.vue';
+export { default as VueEternalLoading } from './components/VueEternalLoading/VueEternalLoading.vue';
 
 export type {
   LoadAction,
   LoadPayload,
   Position,
-} from './components/VueEthernalLoading/helpers/type/type';
+} from './components/VueEternalLoading/helpers/type/type';

@@ -3,13 +3,17 @@
     <slot v-if="state === 'loading'" v-bind="{ isFirstLoad }" name="loading">
       <div class="loading">Loading...</div>
     </slot>
-    <slot v-else-if="state === 'no-more'" name="no-more">
+    <slot v-else-if="state === 'no-more'" v-bind="{ retry }" name="no-more">
       <div class="no-more">No more.</div>
     </slot>
-    <slot v-else-if="state === 'no-results'" name="no-results">
+    <slot
+      v-else-if="state === 'no-results'"
+      v-bind="{ retry }"
+      name="no-results"
+    >
       <div class="no-results">No results.</div>
     </slot>
-    <slot v-else-if="state === 'error'" name="error">
+    <slot v-else-if="state === 'error'" v-bind="{ retry }" name="error">
       <div class="error">Error.</div>
     </slot>
   </div>
@@ -19,10 +23,10 @@
 import {
   defineComponent,
   nextTick,
-  onMounted,
   PropType,
   ref,
   watch,
+  watchEffect,
 } from 'vue';
 import {
   getScrollHeightFromEl,
@@ -54,8 +58,13 @@ export default defineComponent({
     },
     container: {
       required: false,
-      type: Object as PropType<HTMLElement>,
+      type: Object as PropType<HTMLElement | null>,
       default: document.documentElement,
+    },
+    margin: {
+      required: false,
+      type: String,
+      default: undefined,
     },
   },
 
@@ -70,9 +79,15 @@ export default defineComponent({
     function restoreScroll() {
       nextTick(() => {
         if (props.position === 'top') {
-          restoreScrollVerticalPosition(props.container, scrollSize);
+          restoreScrollVerticalPosition(
+            props.container as HTMLElement,
+            scrollSize
+          );
         } else if (props.position === 'left') {
-          restoreScrollHorizontalPosition(props.container, scrollSize);
+          restoreScrollHorizontalPosition(
+            props.container as HTMLElement,
+            scrollSize
+          );
         }
       });
     }
@@ -121,6 +136,11 @@ export default defineComponent({
       observe();
     }
 
+    function retry() {
+      setState('loading');
+      observe();
+    }
+
     function setState(newState: State) {
       state.value = newState;
     }
@@ -137,37 +157,57 @@ export default defineComponent({
       }
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // console.log("entry.isIntersecting", entry.isIntersecting);
-        if (entry.isIntersecting) {
-          if (props.position === 'top') {
-            scrollSize = getScrollHeightFromEl(props.container);
-          } else if (props.position === 'left') {
-            scrollSize = getScrollWidthFromEl(props.container);
-          }
-          unobserve();
-          props.load(
-            {
-              loaded,
-              noMore,
-              noResults,
-              error,
-            },
-            {
-              isFirstLoad: isFirstLoad.value,
+    function createObserver() {
+      return new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (props.position === 'top') {
+              scrollSize = getScrollHeightFromEl(
+                props.container as HTMLElement
+              );
+            } else if (props.position === 'left') {
+              scrollSize = getScrollWidthFromEl(props.container as HTMLElement);
             }
-          );
+            unobserve();
+            props.load(
+              {
+                loaded,
+                noMore,
+                noResults,
+                error,
+              },
+              {
+                isFirstLoad: isFirstLoad.value,
+              }
+            );
+          }
+        },
+        {
+          root: props.container,
+          threshold: 0,
+          rootMargin: props.margin,
+        }
+      );
+    }
+
+    let observer: IntersectionObserver;
+    watchEffect(
+      () => {
+        // Container can be null for the first `mount` if we pass here parent's `ref`.
+        if (props.container !== null) {
+          // Stop old observer if it exists
+          if (observer) {
+            unobserve();
+          }
+
+          observer = createObserver();
+          observe();
         }
       },
       {
-        threshold: 0,
+        flush: 'post',
       }
     );
-
-    onMounted(() => {
-      observe();
-    });
 
     watch(
       () => props.isInitial,
@@ -188,6 +228,7 @@ export default defineComponent({
       rootRef,
       state,
       isFirstLoad,
+      retry,
     };
   },
 });

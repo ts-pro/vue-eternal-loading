@@ -2777,7 +2777,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEthernalLoading/VueEternalLoading.vue?vue&type=template&id=50f42308
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEternalLoading/VueEternalLoading.vue?vue&type=template&id=43542d17
 
 var _hoisted_1 = {
   class: "vue-eternal-loading",
@@ -2807,17 +2807,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     isFirstLoad: _ctx.isFirstLoad
   }), function () {
     return [_hoisted_2];
-  }) : _ctx.state === 'no-more' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-more", {
+  }) : _ctx.state === 'no-more' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-more", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
     key: 1
-  }, function () {
+  }, {
+    retry: _ctx.retry
+  }), function () {
     return [_hoisted_3];
-  }) : _ctx.state === 'no-results' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-results", {
+  }) : _ctx.state === 'no-results' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "no-results", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
     key: 2
-  }, function () {
+  }, {
+    retry: _ctx.retry
+  }), function () {
     return [_hoisted_4];
-  }) : _ctx.state === 'error' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "error", {
+  }) : _ctx.state === 'error' ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "error", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
     key: 3
-  }, function () {
+  }, {
+    retry: _ctx.retry
+  }), function () {
     return [_hoisted_5];
   }) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 512);
 }
@@ -2929,7 +2935,7 @@ function _nonIterableRest() {
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
-// CONCATENATED MODULE: ./src/components/VueEthernalLoading/helpers/scroll/scroll.ts
+// CONCATENATED MODULE: ./src/components/VueEternalLoading/helpers/scroll/scroll.ts
 function getScrollHeightFromEl($el) {
   return $el.scrollHeight;
 }
@@ -2942,7 +2948,7 @@ function restoreScrollVerticalPosition($el, scrollHeight) {
 function restoreScrollHorizontalPosition($el, scrollWidth) {
   $el.scrollLeft = $el.scrollWidth - scrollWidth + $el.scrollLeft;
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEthernalLoading/VueEternalLoading.vue?vue&type=script&lang=ts
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEternalLoading/VueEternalLoading.vue?vue&type=script&lang=ts
 
 
 
@@ -2967,6 +2973,11 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
       required: false,
       type: Object,
       default: document.documentElement
+    },
+    margin: {
+      required: false,
+      type: String,
+      default: undefined
     }
   },
   setup: function setup(props, context) {
@@ -3026,6 +3037,11 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
       observe();
     }
 
+    function retry() {
+      setState('loading');
+      observe();
+    }
+
     function setState(newState) {
       state.value = newState;
     }
@@ -3042,33 +3058,49 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
       }
     }
 
-    var observer = new IntersectionObserver(function (_ref) {
-      var _ref2 = _slicedToArray(_ref, 1),
-          entry = _ref2[0];
+    function createObserver() {
+      return new IntersectionObserver(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            entry = _ref2[0];
 
-      // console.log("entry.isIntersecting", entry.isIntersecting);
-      if (entry.isIntersecting) {
-        if (props.position === 'top') {
-          scrollSize = getScrollHeightFromEl(props.container);
-        } else if (props.position === 'left') {
-          scrollSize = getScrollWidthFromEl(props.container);
+        if (entry.isIntersecting) {
+          if (props.position === 'top') {
+            scrollSize = getScrollHeightFromEl(props.container);
+          } else if (props.position === 'left') {
+            scrollSize = getScrollWidthFromEl(props.container);
+          }
+
+          unobserve();
+          props.load({
+            loaded: loaded,
+            noMore: noMore,
+            noResults: noResults,
+            error: error
+          }, {
+            isFirstLoad: isFirstLoad.value
+          });
+        }
+      }, {
+        root: props.container,
+        threshold: 0,
+        rootMargin: props.margin
+      });
+    }
+
+    var observer;
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watchEffect"])(function () {
+      // Container can be null for the first `mount` if we pass here parent's `ref`.
+      if (props.container !== null) {
+        // Stop old observer if it exists
+        if (observer) {
+          unobserve();
         }
 
-        unobserve();
-        props.load({
-          loaded: loaded,
-          noMore: noMore,
-          noResults: noResults,
-          error: error
-        }, {
-          isFirstLoad: isFirstLoad.value
-        });
+        observer = createObserver();
+        observe();
       }
     }, {
-      threshold: 0
-    });
-    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onMounted"])(function () {
-      observe();
+      flush: 'post'
     });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(function () {
       return props.isInitial;
@@ -3085,11 +3117,12 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
     return {
       rootRef: rootRef,
       state: state,
-      isFirstLoad: isFirstLoad
+      isFirstLoad: isFirstLoad,
+      retry: retry
     };
   }
 }));
-// CONCATENATED MODULE: ./src/components/VueEthernalLoading/VueEternalLoading.vue
+// CONCATENATED MODULE: ./src/components/VueEternalLoading/VueEternalLoading.vue
 
 
 
