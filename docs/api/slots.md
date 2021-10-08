@@ -13,7 +13,7 @@ Renders normal loading state when try to load more content.
 
 Renders state when we don't have more new content and there is no need to make further loading.
 
-- Available scoped slot data:
+- Available scoped slot data (added in `v1.1.0`):
     - `retry` - activates `loading` state again 
       `<template #noMore="{ retry }"> ... <button @click="retry">Retry</button> </template>`
 
@@ -22,7 +22,7 @@ Renders state when we don't have more new content and there is no need to make f
 
 Renders case when we don't have even 1 item loaded. 
 
-- Available scoped slot data:
+- Available scoped slot data (added in `v1.1.0`):
     - `retry` - activates `loading` state again
       `<template #noResults="{ retry }"> ... <button @click="retry">Retry</button> </template>`
 
@@ -31,7 +31,7 @@ Renders case when we don't have even 1 item loaded.
 
 Renders case when we caught an error.
 
-- Available scoped slot data:
+- Available scoped slot data (added in `v1.1.0`):
     - `retry` - activates `loading` state again
       `<template #error="{ retry }"> ... <button @click="retry">Retry</button> </template>`
 

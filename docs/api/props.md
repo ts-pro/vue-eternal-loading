@@ -63,6 +63,7 @@ Tells where **vue-eternal-loader** is. It is required for `top` / `left` positio
 Required if your scroll area is not the whole document ( `document.documentElement` ) and your position `top` or `left`. This prop tells where the scroll is, to scroll right container.
 
 ## margin
+Added in `v1.1.0`
 - Type: `string`
 - Default: `undefined`
 
