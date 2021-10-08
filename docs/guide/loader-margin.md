@@ -7,7 +7,7 @@ In previous examples `load` prop was triggered when loader was visible on screen
 </VueEternalLoading>
 ```
 
-[comment]: <> (<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/omf723ve/1/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>)
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/omf723ve/47/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 In the example above we are created `200px` invisible bounding box around our `VueEternalLoading` component markup. Now `load` prop will be triggered on `200px` earlier  ( like if it was `200px` bigger in all directions ).
 
