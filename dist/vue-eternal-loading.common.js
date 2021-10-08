@@ -1,6 +1,6 @@
 /*!
  * 
- *         @ts-pro/vue-eternal-loading v1.0.0
+ *         @ts-pro/vue-eternal-loading v1.1.0
  *         (c) 2021 Oleksandr Havrashenko
  *         MIT License
  *       
