@@ -1,10 +1,16 @@
 <template>
-  <button @click="reset">Reset list</button>
-  <div v-for="(item, index) in items" :key="index" class="item">
-    page {{ parseInt(index / 10) + 1 }} | {{ item }}
+  <div class="box" ref="boxRef">
+    <button @click="reset">Reset list</button>
+    <div v-for="(item, index) in items" :key="index" class="item">
+      page {{ parseInt(index / 10) + 1 }} | {{ item }}
+    </div>
+    <VueEternalLoading
+      v-model:is-initial="isInitial"
+      :load="load"
+      :container="boxRef"
+    >
+    </VueEternalLoading>
   </div>
-  <VueEternalLoading v-model:is-initial="isInitial" :load="load">
-  </VueEternalLoading>
 </template>
 
 <script lang="ts">
@@ -21,6 +27,7 @@ export default defineComponent({
   setup() {
     const items = ref<string[]>([]);
     const isInitial = ref(true);
+    const boxRef = ref<HTMLElement | null>(null);
     let page = 1;
 
     function load({ loaded, noMore }: LoadAction) {
@@ -62,6 +69,7 @@ export default defineComponent({
       items,
       isInitial,
       reset,
+      boxRef,
     };
   },
 });
@@ -76,5 +84,11 @@ button {
   margin: 5px;
   padding: 5px;
   background-color: #ccc;
+}
+.box {
+  width: 500px;
+  height: 500px;
+  outline: 1px solid black;
+  overflow: scroll;
 }
 </style>

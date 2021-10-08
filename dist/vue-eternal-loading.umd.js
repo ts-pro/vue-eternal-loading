@@ -1,6 +1,6 @@
 /*!
  * 
- *         @ts-pro/vue-eternal-loading v1.1.0
+ *         @ts-pro/vue-eternal-loading v1.1.1
  *         (c) 2021 Oleksandr Havrashenko
  *         MIT License
  *       
@@ -2786,7 +2786,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEternalLoading/VueEternalLoading.vue?vue&type=template&id=43542d17
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueEternalLoading/VueEternalLoading.vue?vue&type=template&id=3136ea5c
 
 var _hoisted_1 = {
   class: "vue-eternal-loading",
@@ -2981,7 +2981,7 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
     container: {
       required: false,
       type: Object,
-      default: document.documentElement
+      default: null
     },
     margin: {
       required: false,
@@ -2999,9 +2999,13 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
     function restoreScroll() {
       Object(external_commonjs_vue_commonjs2_vue_root_Vue_["nextTick"])(function () {
         if (props.position === 'top') {
-          restoreScrollVerticalPosition(props.container, scrollSize);
+          var _props$container;
+
+          restoreScrollVerticalPosition((_props$container = props.container) !== null && _props$container !== void 0 ? _props$container : document.documentElement, scrollSize);
         } else if (props.position === 'left') {
-          restoreScrollHorizontalPosition(props.container, scrollSize);
+          var _props$container2;
+
+          restoreScrollHorizontalPosition((_props$container2 = props.container) !== null && _props$container2 !== void 0 ? _props$container2 : document.documentElement, scrollSize);
         }
       });
     }
@@ -3074,9 +3078,13 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
 
         if (entry.isIntersecting) {
           if (props.position === 'top') {
-            scrollSize = getScrollHeightFromEl(props.container);
+            var _props$container3;
+
+            scrollSize = getScrollHeightFromEl((_props$container3 = props.container) !== null && _props$container3 !== void 0 ? _props$container3 : document.documentElement);
           } else if (props.position === 'left') {
-            scrollSize = getScrollWidthFromEl(props.container);
+            var _props$container4;
+
+            scrollSize = getScrollWidthFromEl((_props$container4 = props.container) !== null && _props$container4 !== void 0 ? _props$container4 : document.documentElement);
           }
 
           unobserve();
@@ -3098,16 +3106,13 @@ function restoreScrollHorizontalPosition($el, scrollWidth) {
 
     var observer;
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watchEffect"])(function () {
-      // Container can be null for the first `mount` if we pass here parent's `ref`.
-      if (props.container !== null) {
-        // Stop old observer if it exists
-        if (observer) {
-          unobserve();
-        }
-
-        observer = createObserver();
-        observe();
+      // Stop old observer if it exists
+      if (observer) {
+        unobserve();
       }
+
+      observer = createObserver();
+      observe();
     }, {
       flush: 'post'
     });

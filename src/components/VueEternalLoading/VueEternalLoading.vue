@@ -59,7 +59,7 @@ export default defineComponent({
     container: {
       required: false,
       type: Object as PropType<HTMLElement | null>,
-      default: document.documentElement,
+      default: null,
     },
     margin: {
       required: false,
@@ -80,12 +80,12 @@ export default defineComponent({
       nextTick(() => {
         if (props.position === 'top') {
           restoreScrollVerticalPosition(
-            props.container as HTMLElement,
+            props.container ?? document.documentElement,
             scrollSize
           );
         } else if (props.position === 'left') {
           restoreScrollHorizontalPosition(
-            props.container as HTMLElement,
+            props.container ?? document.documentElement,
             scrollSize
           );
         }
@@ -163,10 +163,12 @@ export default defineComponent({
           if (entry.isIntersecting) {
             if (props.position === 'top') {
               scrollSize = getScrollHeightFromEl(
-                props.container as HTMLElement
+                props.container ?? document.documentElement
               );
             } else if (props.position === 'left') {
-              scrollSize = getScrollWidthFromEl(props.container as HTMLElement);
+              scrollSize = getScrollWidthFromEl(
+                props.container ?? document.documentElement
+              );
             }
             unobserve();
             props.load(
@@ -193,16 +195,13 @@ export default defineComponent({
     let observer: IntersectionObserver;
     watchEffect(
       () => {
-        // Container can be null for the first `mount` if we pass here parent's `ref`.
-        if (props.container !== null) {
-          // Stop old observer if it exists
-          if (observer) {
-            unobserve();
-          }
-
-          observer = createObserver();
-          observe();
+        // Stop old observer if it exists
+        if (observer) {
+          unobserve();
         }
+
+        observer = createObserver();
+        observe();
       },
       {
         flush: 'post',
