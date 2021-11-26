@@ -8,6 +8,46 @@ Infinity loading component written on [TypeScript](https://www.typescriptlang.or
 - Custom markup & styles
 - Works in browsers & bundlers
 
+### Installation:
+**Yarn**
+```
+yarn add @ts-pro/vue-eternal-loading
+```
+
+**Npm**
+```
+npm install @ts-pro/vue-eternal-loading
+```
+
+**Browser**
+```html
+<head>
+    <!-- Vue 3 must be loaded before `vue-eternal-loading` -->
+    <script src="https://cdn.jsdelivr.net/gh/ts-pro/vue-eternal-loading/dist/vue-eternal-loading.umd.js"></script>
+</head>
+```
+
+### Simple usage:
+```html
+<VueEternalLoading :load="load"></VueEternalLoading>
+```
+```ts
+const PAGE_SIZE = 5;
+
+// We must pass this method to the component 
+// and it will be call automatically when needed
+async function load({ loaded }) {
+  // Load your data from server or anywhere
+  const loadedItems = await loadItems(page);
+  items.value.push(...loadedItems);
+  page += 1;
+  // Call `loaded` callback with 2 arguments:
+  // 1. How many items we have loaded
+  // 2. Our page size to know when we riched the end
+  loaded(loadedItems.length, PAGE_SIZE);
+}
+```
+
 ### Guide & demo:
 Check out our [vue-eternal-loading docs](https://ts-pro.github.io/vue-eternal-loading/)
 
