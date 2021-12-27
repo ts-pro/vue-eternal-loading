@@ -4,4 +4,5 @@ export type {
   LoadAction,
   LoadPayload,
   Position,
+  State,
 } from './components/VueEternalLoading/helpers/type/type';

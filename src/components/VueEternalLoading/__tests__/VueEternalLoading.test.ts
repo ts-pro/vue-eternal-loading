@@ -117,13 +117,15 @@ describe('VueEternalLoading', () => {
     expect(observe).toHaveBeenCalledTimes(1);
     expect(unobserve).toHaveBeenCalledTimes(1);
     // @ts-ignore
-    action.loaded(5, 5);
+    let state = action.loaded(5, 5);
+    expect(state).toBe('loading');
     expect(observe).toHaveBeenCalledTimes(2);
     expect(unobserve).toHaveBeenCalledTimes(1);
     await nextTick();
     expect(wrapper.html()).toContain('STATE_LOADING');
     // @ts-ignore
-    action.loaded(4, 5);
+    state = action.loaded(4, 5);
+    expect(state).toBe('no-more');
     await nextTick();
     expect(wrapper.html()).toContain('STATE_NO_MORE');
   });
@@ -132,7 +134,8 @@ describe('VueEternalLoading', () => {
     const wrapper = getComponent();
     runCallback(true);
     // @ts-ignore
-    action.loaded(0, 5);
+    const state = action.loaded(0, 5);
+    expect(state).toBe('no-results');
     expect(observe).toHaveBeenCalledTimes(1);
     expect(unobserve).toHaveBeenCalledTimes(1);
     await nextTick();
@@ -243,15 +246,15 @@ describe('VueEternalLoading', () => {
 
   test('container is null', async () => {
     const wrapper = getComponent(true, null);
-    expect(observe).not.toHaveBeenCalled();
+    expect(observe).toHaveBeenCalled();
     expect(unobserve).not.toHaveBeenCalled();
 
     await wrapper.setProps({ container: document.documentElement });
-    expect(observe).toHaveBeenCalledTimes(1);
-    expect(unobserve).not.toHaveBeenCalled();
-
-    await wrapper.setProps({ container: document.body });
     expect(observe).toHaveBeenCalledTimes(2);
     expect(unobserve).toHaveBeenCalledTimes(1);
+
+    await wrapper.setProps({ container: document.body });
+    expect(observe).toHaveBeenCalledTimes(3);
+    expect(unobserve).toHaveBeenCalledTimes(2);
   });
 });

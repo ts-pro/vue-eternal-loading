@@ -67,3 +67,17 @@ function load({ loaded }) {
 ---
 
 We have one more state `error`, but we can't rich it automatically, just using `loaded` callback. It's because **vue-eternal-loading** have no idea about loading errors, and it can switch states based on information which you pass to `loaded` and it's not enough information to set `error` state. How to set `error` state manually we will learn further in the next sections.
+
+---
+
+If you want to know which state now is inside `load` function - `loaded()` callback returns it for you.
+```js
+function load({ loaded }) {
+  // Load data from server
+  // ...
+  const state = loaded();
+  if (state === 'no-more') {
+    alert('Boom! You have reached the end.')
+  }
+}
+```

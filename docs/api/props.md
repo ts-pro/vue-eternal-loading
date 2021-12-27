@@ -13,6 +13,8 @@ load(
     // Optional params:
     //   - count - how many items has been loaded
     //   - pageSize - items per page count
+    // Returns:
+    //  - State ( 'loading', 'no-more', 'no-results' )
     loaded,
     
     // Call when you have no more item

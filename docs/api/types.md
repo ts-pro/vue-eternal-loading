@@ -3,7 +3,7 @@
 ## LoadAction
 ```ts
 type LoadAction = {
-  loaded(count?: number, pageSize?: number): void;
+  loaded(count?: number, pageSize?: number): State;
   noMore(): void;
   noResults(): void;
   error(): void;
@@ -24,3 +24,10 @@ Describes payload what we get in `loaded` prop callback.
 type Position = 'top' | 'left' | 'default';
 ```
 Describes possible loader positions.
+
+## State
+Added in `v1.2.0`
+```ts
+type State = 'loading' | 'error' | 'no-more' | 'no-results';
+```
+Describes possible state for loader.

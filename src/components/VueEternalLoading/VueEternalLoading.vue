@@ -92,12 +92,14 @@ export default defineComponent({
       });
     }
 
-    function loaded(count?: number, pageSize?: number) {
+    function loaded(count?: number, pageSize?: number): State {
       if (count === 0) {
         if (isFirstLoad.value) {
           noResults();
+          return 'no-results';
         } else {
           noMore();
+          return 'no-more';
         }
       } else if (
         count !== undefined &&
@@ -105,10 +107,12 @@ export default defineComponent({
         count < pageSize
       ) {
         noMore();
+        return 'no-more';
       } else {
         isFirstLoad.value = false;
         restoreScroll();
         observe();
+        return 'loading';
       }
     }
 

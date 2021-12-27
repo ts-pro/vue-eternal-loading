@@ -1,5 +1,5 @@
 export type LoadAction = {
-  loaded(count?: number, pageSize?: number): void;
+  loaded(count?: number, pageSize?: number): State;
   noMore(): void;
   noResults(): void;
   error(): void;
