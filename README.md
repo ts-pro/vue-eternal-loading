@@ -1,6 +1,6 @@
 # vue-eternal-loading [![Build Status](https://travis-ci.com/ts-pro/vue-eternal-loading.svg?branch=main)](https://travis-ci.com/ts-pro/vue-eternal-loading)
 
-Infinity loading component written on [TypeScript](https://www.typescriptlang.org/) for [Vue 3](https://v3.vuejs.org/), based on [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). No dependencies.
+Infinity loading component written on [TypeScript](https://www.typescriptlang.org/) for [Vue 3](https://v3.vuejs.org/). No dependencies.
 
 ### Features:
 - 4 directional ( top / left / right / bottom)
