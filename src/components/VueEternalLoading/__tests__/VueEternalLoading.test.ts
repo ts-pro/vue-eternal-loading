@@ -7,7 +7,7 @@ import {
   restoreScrollHorizontalPosition,
   restoreScrollVerticalPosition,
 } from '../helpers/scroll/scroll';
-import { LoadAction, LoadPayload } from '../helpers/type/type';
+import type { LoadAction, LoadPayload } from '../helpers/type/type';
 import VueEternalLoading from '../VueEternalLoading.vue';
 
 jest.mock('../helpers/scroll/scroll');

@@ -34,7 +34,12 @@ import {
   restoreScrollHorizontalPosition,
   restoreScrollVerticalPosition,
 } from './helpers/scroll/scroll';
-import { LoadAction, LoadPayload, Position, State } from './helpers/type/type';
+import type {
+  LoadAction,
+  LoadPayload,
+  Position,
+  State,
+} from './helpers/type/type';
 
 export default defineComponent({
   name: 'VueEternalLoading',
