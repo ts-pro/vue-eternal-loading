@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import VueEternalLoading from '@/components/VueEternalLoading/VueEternalLoading.vue';
-import type { LoadAction } from '@/components/VueEternalLoading/helpers/type/type';
+import VueEternalLoading from './components/VueEternalLoading/VueEternalLoading.vue';
+import type { LoadAction } from './components/VueEternalLoading/helpers/type/type';
 
 export default defineComponent({
   name: 'App',

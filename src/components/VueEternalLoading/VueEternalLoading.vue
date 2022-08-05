@@ -202,20 +202,22 @@ export default defineComponent({
     }
 
     let observer: IntersectionObserver;
-    watchEffect(
-      () => {
-        // Stop old observer if it exists
-        if (observer) {
-          unobserve();
-        }
+    if (typeof IntersectionObserver !== 'undefined') {
+      watchEffect(
+        () => {
+          // Stop old observer if it exists
+          if (observer) {
+            unobserve();
+          }
 
-        observer = createObserver();
-        observe();
-      },
-      {
-        flush: 'post',
-      }
-    );
+          observer = createObserver();
+          observe();
+        },
+        {
+          flush: 'post',
+        }
+      );
+    }
 
     watch(
       () => props.isInitial,
