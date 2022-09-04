@@ -177,7 +177,7 @@ const App = {
 };
 
 const app = Vue.createApp(App);
-app.component('vue-eternal-loading', VueEternalLoading);
+app.component('vue-eternal-loading', window.TSPro.VueEternalLoading);
 app.mount('#app');
 </script>
 ```

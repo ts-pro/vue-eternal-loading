@@ -2,7 +2,7 @@
   <div class="box" ref="boxRef">
     <button @click="reset">Reset list</button>
     <div v-for="(item, index) in items" :key="index" class="item">
-      page {{ parseInt(index / 10) + 1 }} | {{ item }}
+      page {{ Math.trunc(index / 10) + 1 }} | {{ item }}
     </div>
     <VueEternalLoading
       v-model:is-initial="isInitial"

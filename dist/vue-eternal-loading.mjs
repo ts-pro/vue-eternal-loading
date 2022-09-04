@@ -1,18 +1,18 @@
-import { defineComponent as R, ref as h, watchEffect as V, watch as k, nextTick as H, openBlock as N, createElementBlock as P, renderSlot as f, normalizeProps as m, mergeProps as v, createCommentVNode as L, createElementVNode as g } from "vue";
-function $(e) {
-  return e.scrollHeight;
+import { defineComponent as H, ref as _, watchEffect as P, watch as I, unref as i, openBlock as R, createElementBlock as w, renderSlot as p, normalizeProps as v, mergeProps as g, createCommentVNode as L, createElementVNode as h, nextTick as B } from "vue";
+function T(o) {
+  return o.scrollHeight;
 }
-function w(e) {
-  return e.scrollWidth;
+function W(o) {
+  return o.scrollWidth;
 }
-function B(e, n) {
-  e.scrollTop = e.scrollHeight - n + e.scrollTop;
+function z(o, s) {
+  o.scrollTop = o.scrollHeight - s + o.scrollTop;
 }
-function T(e, n) {
-  e.scrollLeft = e.scrollWidth - n + e.scrollLeft;
+function C(o, s) {
+  o.scrollLeft = o.scrollWidth - s + o.scrollLeft;
 }
-const W = R({
-  name: "VueEternalLoading",
+const M = /* @__PURE__ */ h("div", { class: "loading" }, "Loading...", -1), j = /* @__PURE__ */ h("div", { class: "no-more" }, "No more.", -1), D = /* @__PURE__ */ h("div", { class: "no-results" }, "No results.", -1), A = /* @__PURE__ */ h("div", { class: "error" }, "Error.", -1), J = /* @__PURE__ */ H({
+  __name: "VueEternalLoading",
   props: {
     load: {
       required: !0,
@@ -39,124 +39,111 @@ const W = R({
       default: void 0
     }
   },
-  setup(e, n) {
-    const r = h();
-    let s = h("loading"), o = h(e.isInitial);
-    const S = typeof process < "u" && process.env !== void 0;
-    let a = 0;
-    function u() {
-      H(() => {
-        var t, i;
-        e.position === "top" ? B(
-          (t = e.container) != null ? t : document.documentElement,
-          a
-        ) : e.position === "left" && T(
-          (i = e.container) != null ? i : document.documentElement,
-          a
+  emits: ["update:isInitial"],
+  setup(o, { emit: s }) {
+    const t = o, l = _();
+    let a = _("loading"), r = _(t.isInitial);
+    const F = typeof process < "u" && process.env !== void 0 && process.env.NODE_ENV !== "test";
+    let c = 0;
+    function d() {
+      B(() => {
+        var e, n;
+        t.position === "top" ? z(
+          (e = t.container) != null ? e : document.documentElement,
+          c
+        ) : t.position === "left" && C(
+          (n = t.container) != null ? n : document.documentElement,
+          c
         );
       });
     }
-    function F(t, i) {
-      return t === 0 ? o.value ? (E(), "no-results") : (y(), "no-more") : t !== void 0 && i !== void 0 && t < i ? (y(), "no-more") : (o.value = !1, u(), c(), "loading");
+    function N(e, n) {
+      return e === 0 ? r.value ? (S(), "no-results") : (y(), "no-more") : e !== void 0 && n !== void 0 && e < n ? (y(), "no-more") : (r.value = !1, d(), f(), "loading");
     }
     function y() {
-      o.value = !1, l("no-more"), u();
+      r.value = !1, u("no-more"), d();
     }
-    function E() {
-      o.value = !1, l("no-results"), u();
+    function S() {
+      r.value = !1, u("no-results"), d();
     }
-    function I() {
-      o.value = !1, l("error"), u();
-    }
-    function _() {
-      o.value = !0, l("loading"), c();
+    function V() {
+      r.value = !1, u("error"), d();
     }
     function q() {
-      l("loading"), c();
+      r.value = !0, u("loading"), f();
     }
-    function l(t) {
-      s.value = t;
+    function E() {
+      u("loading"), f();
     }
-    function p() {
-      r.value && d.unobserve(r.value);
+    function u(e) {
+      a.value = e;
     }
-    function c() {
-      r.value && d.observe(r.value);
+    function b() {
+      l.value && m.unobserve(l.value);
+    }
+    function f() {
+      l.value && m.observe(l.value);
     }
     function O() {
       return new IntersectionObserver(
-        ([t]) => {
-          var i, b;
-          t.isIntersecting && (e.position === "top" ? a = $(
-            (i = e.container) != null ? i : document.documentElement
-          ) : e.position === "left" && (a = w(
-            (b = e.container) != null ? b : document.documentElement
-          )), p(), e.load(
+        ([e]) => {
+          var n, k;
+          e.isIntersecting && (t.position === "top" ? c = T(
+            (n = t.container) != null ? n : document.documentElement
+          ) : t.position === "left" && (c = W(
+            (k = t.container) != null ? k : document.documentElement
+          )), b(), t.load(
             {
-              loaded: F,
+              loaded: N,
               noMore: y,
-              noResults: E,
-              error: I
+              noResults: S,
+              error: V
             },
             {
-              isFirstLoad: o.value
+              isFirstLoad: r.value
             }
           ));
         },
         {
-          root: e.container,
+          root: t.container,
           threshold: 0,
-          rootMargin: e.margin
+          rootMargin: t.margin
         }
       );
     }
-    let d;
-    return typeof IntersectionObserver < "u" && V(
+    let m;
+    return typeof IntersectionObserver < "u" && P(
       () => {
-        d && p(), d = O(), c();
+        m && b(), m = O(), f();
       },
       {
         flush: "post"
       }
-    ), k(
-      () => e.isInitial,
-      (t) => {
-        t && _();
+    ), I(
+      () => t.isInitial,
+      (e) => {
+        e && q();
       }
-    ), k(o, (t) => {
-      t || n.emit("update:isInitial", !1);
-    }), {
-      rootRef: r,
-      state: s,
-      isFirstLoad: o,
-      retry: q,
-      isSSR: S
-    };
+    ), I(r, (e) => {
+      e || s("update:isInitial", !1);
+    }), (e, n) => i(F) ? L("", !0) : (R(), w("div", {
+      key: 0,
+      class: "vue-eternal-loading",
+      ref_key: "rootRef",
+      ref: l
+    }, [
+      i(a) === "loading" ? p(e.$slots, "loading", v(g({ key: 0 }, { isFirstLoad: i(r) })), () => [
+        M
+      ]) : i(a) === "no-more" ? p(e.$slots, "no-more", v(g({ key: 1 }, { retry: E })), () => [
+        j
+      ]) : i(a) === "no-results" ? p(e.$slots, "no-results", v(g({ key: 2 }, { retry: E })), () => [
+        D
+      ]) : i(a) === "error" ? p(e.$slots, "error", v(g({ key: 3 }, { retry: E })), () => [
+        A
+      ]) : L("", !0)
+    ], 512));
   }
-}), z = (e, n) => {
-  const r = e.__vccOpts || e;
-  for (const [s, o] of n)
-    r[s] = o;
-  return r;
-}, C = {
-  key: 0,
-  class: "vue-eternal-loading",
-  ref: "rootRef"
-}, M = /* @__PURE__ */ g("div", { class: "loading" }, "Loading...", -1), j = /* @__PURE__ */ g("div", { class: "no-more" }, "No more.", -1), A = /* @__PURE__ */ g("div", { class: "no-results" }, "No results.", -1), D = /* @__PURE__ */ g("div", { class: "error" }, "Error.", -1);
-function G(e, n, r, s, o, S) {
-  return e.isSSR ? L("", !0) : (N(), P("div", C, [
-    e.state === "loading" ? f(e.$slots, "loading", m(v({ key: 0 }, { isFirstLoad: e.isFirstLoad })), () => [
-      M
-    ]) : e.state === "no-more" ? f(e.$slots, "no-more", m(v({ key: 1 }, { retry: e.retry })), () => [
-      j
-    ]) : e.state === "no-results" ? f(e.$slots, "no-results", m(v({ key: 2 }, { retry: e.retry })), () => [
-      A
-    ]) : e.state === "error" ? f(e.$slots, "error", m(v({ key: 3 }, { retry: e.retry })), () => [
-      D
-    ]) : L("", !0)
-  ], 512));
-}
-const K = /* @__PURE__ */ z(W, [["render", G]]);
+});
 export {
-  K as VueEternalLoading
+  J as VueEternalLoading
 };

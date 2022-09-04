@@ -20,15 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  defineEmits,
-  defineProps,
-  nextTick,
-  PropType,
-  ref,
-  watch,
-  watchEffect,
-} from 'vue';
+import { nextTick, PropType, ref, watch, watchEffect } from 'vue';
 import {
   getScrollHeightFromEl,
   getScrollWidthFromEl,
@@ -76,7 +68,11 @@ const emit = defineEmits(['update:isInitial']);
 const rootRef = ref<HTMLDivElement>();
 let state = ref<State>('loading');
 let isFirstLoad = ref(props.isInitial);
-const isSSR = typeof process !== 'undefined' && process.env !== undefined;
+
+const isSSR =
+  typeof process !== 'undefined' &&
+  process.env !== undefined &&
+  process.env.NODE_ENV !== 'test';
 
 // Height or width of the scroll ( depends on loader position ).
 let scrollSize = 0;

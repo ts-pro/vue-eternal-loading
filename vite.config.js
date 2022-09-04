@@ -4,9 +4,6 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [vue()],
-  // resolve: {
-  //   dedupe: ['vue'],
-  // },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
