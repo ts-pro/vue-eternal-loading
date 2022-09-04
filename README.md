@@ -1,4 +1,4 @@
-# vue-eternal-loading [![Build Status](https://travis-ci.com/ts-pro/vue-eternal-loading.svg?branch=main)](https://travis-ci.com/ts-pro/vue-eternal-loading)
+# 🇺🇦 vue-eternal-loading [![Build Status](https://travis-ci.com/ts-pro/vue-eternal-loading.svg?branch=main)](https://travis-ci.com/ts-pro/vue-eternal-loading)
 
 Infinity loading component written on [TypeScript](https://www.typescriptlang.org/) for [Vue 3](https://v3.vuejs.org/). No dependencies.
 
@@ -7,6 +7,7 @@ Infinity loading component written on [TypeScript](https://www.typescriptlang.or
 - 4 loading states ( loading / no-more / no-results / error )
 - Custom markup & styles
 - Works in browsers & bundlers
+- SSR friendly
 
 ### Installation:
 **Yarn**
