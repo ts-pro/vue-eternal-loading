@@ -2,7 +2,7 @@
   <div class="box" ref="boxRef">
     <button @click="reset">Reset list</button>
     <div v-for="(item, index) in items" :key="index" class="item">
-      page {{ parseInt(index / 10) + 1 }} | {{ item }}
+      page {{ Math.trunc(index / 10) + 1 }} | {{ item }}
     </div>
     <VueEternalLoading
       v-model:is-initial="isInitial"
@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import VueEternalLoading from '@/components/VueEternalLoading/VueEternalLoading.vue';
-import { LoadAction } from '@/components/VueEternalLoading/helpers/type/type';
+import VueEternalLoading from './components/VueEternalLoading/VueEternalLoading.vue';
+import type { LoadAction } from './components/VueEternalLoading/helpers/type/type';
 
 export default defineComponent({
   name: 'App',

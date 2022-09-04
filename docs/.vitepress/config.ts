@@ -1,4 +1,7 @@
-module.exports = {
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  lang: 'en-US',
   title: 'vue-eternal-loading',
   description: 'Infinity loading component vue3 projects.',
   base: '/vue-eternal-loading/',
@@ -6,14 +9,7 @@ module.exports = {
     ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/vue-eternal-loading/logo.png"}],
   ],
   themeConfig: {
-    repo: 'ts-pro/vue-eternal-loading',
-    docsDir: 'docs',
     logo: '/logo.png',
-
-    editLinks: true,
-    docsBranch: 'main',
-    editLinkText: 'Edit this page on GitHub',
-    lastUpdated: 'Last Updated',
 
     nav: [
       { text: 'Guide', link: '/', activeMatch: '^/$|^/guide/' },
@@ -34,13 +30,13 @@ module.exports = {
       '/': getGuideSidebar(),
     }
   },
-}
+})
 
 function getGuideSidebar() {
   return [
     {
       text: 'Getting started',
-      children: [
+      items: [
         { text: 'Introduction', link: '/' },
         { text: 'Installation', link: '/guide/installation' },
         { text: 'Simple usage', link: '/guide/simple-usage' },
@@ -48,7 +44,7 @@ function getGuideSidebar() {
     },
     {
       text: 'Examples',
-      children: [
+      items: [
         { text: 'Loading states', link: '/guide/loading-states' },
         { text: 'Styling with slots', link: '/guide/styling-with-slots' },
         { text: 'Manually change states', link: '/guide/manually-change-states' },
@@ -66,7 +62,7 @@ function getApiSidebar() {
   return [
     {
       text: 'API',
-      children: [
+      items: [
         { text: 'Props', link: '/api/props' },
         { text: 'Slots', link: '/api/slots' },
         { text: 'Types', link: '/api/types' },
