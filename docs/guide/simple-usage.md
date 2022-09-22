@@ -43,8 +43,8 @@ Here you can scroll down to get more content. When you reach the end, you will s
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script lang="ts" setup>
+import { ref } from 'vue';
 import { VueEternalLoading, LoadAction } from '@ts-pro/vue-eternal-loading';
 
 const URL = 'https://reqres.in/api/users';
@@ -54,36 +54,23 @@ type User = {
   id: string;
 };
 
-export default defineComponent({
-  name: 'SimpleUsage',
-  components: { VueEternalLoading },
+const users = ref<User[]>([]);
+let page = 1;
 
-  setup() {
-    const users = ref<User[]>([]);
-    let page = 1;
+function loadUsers(page: number): Promise<User[]> {
+  return fetch(`${URL}?delay=1&per_page=${PAGE_SIZE}&page=${page}`)
+      .then((res) => res.json())
+      .then((res) => res.data);
+}
 
-    function loadUsers(page: number): Promise<User[]> {
-      return fetch(`${URL}?delay=1&per_page=${PAGE_SIZE}&page=${page}`)
-          .then((res) => res.json())
-          .then((res) => res.data);
-    }
-
-    async function load({ loaded }: LoadAction): Promise<void> {
-      const loadedUsers = await loadUsers(page);
-      users.value.push(...loadedUsers);
-      page += 1;
-      loaded(loadedUsers.length, PAGE_SIZE);
-    }
-
-    return {
-      load,
-      users,
-    };
-  },
-});
+async function load({ loaded }: LoadAction): Promise<void> {
+  const loadedUsers = await loadUsers(page);
+  users.value.push(...loadedUsers);
+  page += 1;
+  loaded(loadedUsers.length, PAGE_SIZE);
+}
 </script>
 ```
-
 
 ## JavaScript ( ES )
 ```vue
@@ -97,40 +84,28 @@ export default defineComponent({
   </div>
 </template>
 
-<script lang="js">
-import { defineComponent, ref } from 'vue';
+<script lang="js" setup>
+import { ref } from 'vue';
 import { VueEternalLoading } from '@ts-pro/vue-eternal-loading';
 
 const URL = 'https://reqres.in/api/users';
 const PAGE_SIZE = 5;
 
-export default defineComponent({
-  name: 'SimpleUsage',
-  components: { VueEternalLoading },
+const users = ref([]);
+let page = 1;
 
-  setup() {
-    const users = ref([]);
-    let page = 1;
+function loadUsers(page) {
+  return fetch(`${URL}?delay=1&per_page=${PAGE_SIZE}&page=${page}`)
+      .then((res) => res.json())
+      .then((res) => res.data);
+}
 
-    function loadUsers(page) {
-      return fetch(`${URL}?delay=1&per_page=${PAGE_SIZE}&page=${page}`)
-          .then((res) => res.json())
-          .then((res) => res.data);
-    }
-
-    async function load({ loaded }) {
-      const loadedUsers = await loadUsers(page);
-      users.value.push(...loadedUsers);
-      page += 1;
-      loaded(loadedUsers.length, PAGE_SIZE);
-    }
-
-    return {
-      load,
-      users,
-    };
-  },
-});
+async function load({ loaded }) {
+  const loadedUsers = await loadUsers(page);
+  users.value.push(...loadedUsers);
+  page += 1;
+  loaded(loadedUsers.length, PAGE_SIZE);
+}
 </script>
 ```
 
