@@ -20,7 +20,8 @@
 </template>
 
 <script lang="ts" setup>
-import { nextTick, PropType, ref, watch, watchEffect } from 'vue';
+import { nextTick, ref, watch, watchEffect } from 'vue';
+import type { PropType } from 'vue';
 import {
   getScrollHeightFromEl,
   getScrollWidthFromEl,
