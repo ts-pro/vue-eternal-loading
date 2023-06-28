@@ -14,4 +14,4 @@ Or you can pass it using v-model if you want to implement reset logics from the 
 <VueEternalLoading :load="load" :is-initial="isInitial"></VueEternalLoading>
 ```
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/tms5g870/19/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/tms5g870/21/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>

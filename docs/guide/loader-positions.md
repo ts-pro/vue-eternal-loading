@@ -6,7 +6,7 @@ It's because if you load new content which you put to the bottom or to the right
 
 In other words if you scroll 100 pixels down, and then put 200 pixels of new content to the end, it would be okay, because your top content and your scroll are in the same positions. Same rules can be applied to the right loader position:
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/8u150Lpk/54/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/8u150Lpk/59/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 As you see, we just put loader to the right using css, nothing else, and everything works great!
 
@@ -54,8 +54,8 @@ setup() {
 
 Top scroll example:
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/j2ystkcf/19/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/j2ystkcf/20/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 Left scroll example:
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/eLoqnbaz/29/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/eLoqnbaz/30/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>

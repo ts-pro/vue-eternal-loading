@@ -26,7 +26,7 @@ function load({ loaded }) {
   loaded();
 }
 ```
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/0ak1f69t/5/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/0ak1f69t/10/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ---
 
@@ -39,7 +39,7 @@ function load({ loaded }) {
   loaded(items.length);
 }
 ```
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/4gdht3ap/3/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/4gdht3ap/7/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 If we call `loaded(0)` on our second+ load - we will get **no-more** state. Which means that we have loaded content before, but we reached the end now.
 ```js
@@ -50,7 +50,7 @@ function load({ loaded }) {
   loaded(items.length);
 }
 ```
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/uwapjzk8/6/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/uwapjzk8/7/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 You can admit in example above that we have 1 extra request, before we riched state `no-more`. It happens because we do not know exact page size and we can set state `no-more` only if we get empty response. It's okay if you don't know for sure what's your page size or you may have floating items count per request. But in case when you expect exact items count per page it's a good practice to pass second param to `loaded` callback, where you should specify your page size. It prevents unnecessary extra request to server and set state `no-more` when we will get items count less than page size:
 ```js
@@ -62,7 +62,7 @@ function load({ loaded }) {
   loaded(items.length, PAGE_SIZE);
 }
 ```
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/pe58wszL/78/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/pe58wszL/98/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ---
 

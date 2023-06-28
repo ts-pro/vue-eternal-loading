@@ -39,13 +39,13 @@
 </template>
 ```
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/ucxt3qog/4/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/ucxt3qog/5/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ---
 
 Or we can put fancy boostrap spinner:
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/ajfky3se/19/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/ajfky3se/20/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ---
 
@@ -79,7 +79,7 @@ In the loading slot we have access to `isFirstLoad` data via scoped slot. This d
 </template>
 ```
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/x4rn37bj/21/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/x4rn37bj/22/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 
 

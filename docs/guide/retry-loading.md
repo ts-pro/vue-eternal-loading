@@ -11,4 +11,4 @@ Normally if you reached states `no-more`, `no-results` or `error` you have the o
 </VueEternalLoading>
 ```
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/xhtg6L92/4/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/xhtg6L92/8/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>

@@ -15,7 +15,7 @@ function load({ loaded, noMore }) {
   }
 }
 ```
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/mqsh4kbr/9/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/mqsh4kbr/11/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ---
 
@@ -37,7 +37,7 @@ function load({ loaded, noMore, noResults }, { isFirstLoad }) {
 }
 ```
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/hs5up20d/8/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/hs5up20d/9/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ---
 
@@ -64,4 +64,4 @@ load({ loaded, error }) {
   })
 }
 ```
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/kbvtjnc0/41/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/kbvtjnc0/42/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>

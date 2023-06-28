@@ -39,4 +39,4 @@ setup() {
 }
 ```
 
-<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/gz3t4q9s/1/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/gz3t4q9s/3/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
