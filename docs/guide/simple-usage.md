@@ -1,33 +1,34 @@
 # Simple usage
 
-There is a basic example of **vue-eternal-loading** usage.
+Here is a basic example of how to use **vue-eternal-loading**.
 
-When you work with **vue-eternal-loading** you should implement the only required prop - `load`. This callback method will be called automatically when it's time to load more data. `load` provides 2 arguments which will be described later, for now we only need the first one.
+When using **vue-eternal-loading**, the only required prop you need to implement is `load`. This callback method will be automatically called when it's time to load more data. `load` takes two arguments, which will be described later. For now, we only need the first one.
+
 ```html
 <VueEternalLoading :load="load"></VueEternalLoading>
 ```
 ```ts
 const PAGE_SIZE = 5;
 
-// We must pass this method to the component 
-// and it will be call automatically when needed
+// We must pass this method to the component,
+// and it will be called automatically when needed.
 async function load({ loaded }) {
-  // Load your data from server or anywhere
+  // Load your data from the server or any other source.
   const loadedItems = await loadItems(page);
   items.value.push(...loadedItems);
   page += 1;
-  // Call `loaded` callback with 2 arguments:
-  // 1. How many items we have loaded
-  // 2. Our page size to know when we riched the end
+  // Call the `loaded` callback with 2 arguments:
+  // 1. The number of items we have loaded
+  // 2. Our page size to know when we have reached the end
   loaded(loadedItems.length, PAGE_SIZE);
 }
 ```
 
-> **_NOTE:_**  You can find detailed explanation and other component possibilities in the next sections.
+> **_NOTE:_**  You can find a detailed explanation and explore other possibilities of the component in the following sections.
 
 ## Example
 
-Here you can scroll down to get more content. When you reach the end, you will see "No more.". All texts in this example is on defaults.
+Here, you can scroll down to view more content. When you reach the end, you will see the message "No more." All the texts in this example are set to their default values.
 
 <iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/pe58wszL/99/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
