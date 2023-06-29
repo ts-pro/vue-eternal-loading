@@ -5,6 +5,7 @@ module.exports = {
   },
   npm: {
     publish: true,
+    skipChecks: true,
   },
   github: {
     release: true,
