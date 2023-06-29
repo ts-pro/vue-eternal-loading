@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isSSR" class="vue-eternal-loading" ref="rootRef">
+  <div class="vue-eternal-loading" ref="rootRef">
     <slot v-if="state === 'loading'" v-bind="{ isFirstLoad }" name="loading">
       <div class="loading">Loading...</div>
     </slot>
@@ -69,11 +69,6 @@ const emit = defineEmits(['update:isInitial']);
 const rootRef = ref<HTMLDivElement>();
 let state = ref<State>('loading');
 let isFirstLoad = ref(props.isInitial);
-
-const isSSR =
-  typeof process !== 'undefined' &&
-  process.env !== undefined &&
-  process.env.NODE_ENV !== 'test';
 
 // Height or width of the scroll ( depends on loader position ).
 let scrollSize = 0;
