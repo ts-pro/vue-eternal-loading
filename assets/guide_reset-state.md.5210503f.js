@@ -27,4 +27,4 @@ import{_ as s,c as a,o as n,a as l,b as o}from"./app.9013c3dc.js";const h=JSON.p
 <span class="line"><span style="color:#89DDFF;">      </span><span style="color:#676E95;">// Other data...</span></span>
 <span class="line"><span style="color:#F07178;">    </span><span style="color:#89DDFF;">};</span></span>
 <span class="line"><span style="color:#89DDFF;">}</span></span>
-<span class="line"></span></code></pre></div>`,5),t=o("iframe",{width:"100%",height:"300",src:"//jsfiddle.net/gavrashenko/gz3t4q9s/1/embedded/result/dark/",allowfullscreen:"allowfullscreen",allowpaymentrequest:"",frameborder:"0"},null,-1),c=[p,t];function r(F,y,i,D,d,u){return n(),a("div",null,c)}const C=s(e,[["render",r]]);export{h as __pageData,C as default};
+<span class="line"></span></code></pre></div>`,5),t=o("iframe",{width:"100%",height:"300",src:"//jsfiddle.net/gavrashenko/gz3t4q9s/3/embedded/result/dark/",allowfullscreen:"allowfullscreen",allowpaymentrequest:"",frameborder:"0"},null,-1),c=[p,t];function r(F,y,i,D,d,u){return n(),a("div",null,c)}const C=s(e,[["render",r]]);export{h as __pageData,C as default};
