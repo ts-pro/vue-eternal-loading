@@ -1,23 +1,23 @@
 # Loading states
 
-**vue-eternal-loading** component has 4 different states which can render different templates and have influence on component's behaviour:
+The **vue-eternal-loading** component has four different states that can render different templates and influence the behavior of the component:
 
-- **loading** - it's a default state when we try to load some new content. In this state `load` prop triggers automatically when it needed. Default template: `<div class="loading">Loading...</div>`
-
-
-- **no-more** - this state means than we have no more content ( server replied with empty content or content less than full page ). In this state `load` is not calling anymore. Default template: `<div class="no-more">No more.</div>`
+- **loading**: This is the default state when we are trying to load new content. In this state, the `load` prop triggers automatically when needed. Default template: `<div class="loading">Loading...</div>`
 
 
-- **no-results** - this state means that we have no content at all. Maybe we have tried to load something from a server, but we got 0 items in our first request, and in this case we may want to show 'No results message'. In this state `load` is not calling anymore.  Default template: `<div class="no-results">No results.</div>`
+- **no-more**: This state indicates that we have reached the end of the available content. It occurs when the server responds with empty content or content that is less than a full page. In this state, the `load` prop is not called anymore. Default template: `<div class="no-more">No more.</div>`
 
 
-- **error** - this state indicates that we got an error from the server or anywhere else. In this state `load` is not calling anymore. Default template: `<div class="error">Error.</div>`
+- **no-results**: This state means that we have no content at all. It can occur when we attempt to load content from the server, but the initial request returns zero items. In such cases, we may want to display a "No results" message. In this state, the `load` prop is not called anymore. Default template: `<div class="no-results">No results.</div>`
 
-We can switch between states automatically, just using `loaded` callback inside `load` prop method, and we'll describe it below. Or we can set any state manually, and we will explain it in the further section.
+
+- **error** - This state indicates that we encountered an error from the server or any other source. In this state, the `load` prop is not called anymore. Default template: `<div class="error">Error.</div>`
+
+We can automatically switch between states by using the `loaded` callback within the `load` prop method, which will be described below. Alternatively, we can manually set any state, and we will explain this in a later section.
 
 ---
 
-In some cases we may not want to have state different from **loading**. For example, when we want to implement loading which shouldn't stop ever. It can be logs loading, realtime news loading or just trying to load something forever. To have this behaviour we have to call `loaded` callback without params:
+In some cases, we may not want to have a state other than **loading**. For example, when implementing a loading feature that should never stop, such as loading logs, real-time news, or continuously attempting to load something. To achieve this behavior, we can call the `loaded` callback without any parameters.
 
 ```js
 function load({ loaded }) {
@@ -30,7 +30,7 @@ function load({ loaded }) {
 
 ---
 
-If we use `loaded` callback with 1 param ( items count ) we can rich 2 states now: `no-more`, `no-results`. We may want to have this states to render corresponding templates. If we call `loaded(0)` on our first load - we will get **no-results** state.
+If we use the `loaded` callback with one parameter (items count), we can reach two states: **no-more** and **no-results**. We might want to have these states in order to render the corresponding templates. If we call `loaded(0)` during our first load, we will enter the **no-results** state.
 ```js
 function load({ loaded }) {
   // Load data from server
@@ -41,7 +41,7 @@ function load({ loaded }) {
 ```
 <iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/4gdht3ap/7/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-If we call `loaded(0)` on our second+ load - we will get **no-more** state. Which means that we have loaded content before, but we reached the end now.
+If we call `loaded(0)` during our second or subsequent load, we will enter the **no-more** state. This indicates that we have previously loaded content, but we have now reached the end and there is no more content available to load.
 ```js
 function load({ loaded }) {
   // Load data from server
@@ -52,7 +52,7 @@ function load({ loaded }) {
 ```
 <iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/uwapjzk8/7/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-You can admit in example above that we have 1 extra request, before we riched state `no-more`. It happens because we do not know exact page size and we can set state `no-more` only if we get empty response. It's okay if you don't know for sure what's your page size or you may have floating items count per request. But in case when you expect exact items count per page it's a good practice to pass second param to `loaded` callback, where you should specify your page size. It prevents unnecessary extra request to server and set state `no-more` when we will get items count less than page size:
+In the example mentioned above, we encountered an extra request before reaching the **no-more** state. This occurs because we don't know the exact page size, and we can only set the **no-more** state if we receive an empty response. This situation is acceptable when the page size is unknown or when the number of items per request may vary. However, if you expect a specific item count per page, it is good practice to pass a second parameter to the `loaded` callback, where you can specify your page size. This helps prevent unnecessary extra requests to the server and allows us to set the **no-more** state when we receive an items count less than the page size.
 ```js
 const PAGE_SIZE = 5;
 
@@ -66,11 +66,11 @@ function load({ loaded }) {
 
 ---
 
-We have one more state `error`, but we can't rich it automatically, just using `loaded` callback. It's because **vue-eternal-loading** have no idea about loading errors, and it can switch states based on information which you pass to `loaded` and it's not enough information to set `error` state. How to set `error` state manually we will learn further in the next sections.
+We have one more state called **error**, but it cannot be reached automatically just by using the `loaded` callback. This is because **vue-eternal-loading** is not aware of loading errors, and it switches states based on the information you pass to the `loaded` callback. The information provided is not sufficient to set the **error** state. In the upcoming sections, we will learn how to manually set the **error** state.
 
 ---
 
-If you want to know which state now is inside `load` function - `loaded()` callback returns it for you.
+If you want to know the current state inside the `load` function, the `loaded()` callback can return it for you.
 ```js
 function load({ loaded }) {
   // Load data from server
