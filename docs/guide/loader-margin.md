@@ -1,6 +1,10 @@
 # Loader margin
 
-In previous examples `load` prop was triggered when loader was visible on screen or in your container element ( depends on `container` prop ). Sometimes you may want to start loading a little earlier to make loading process more seamless for a user. It is possible with prop `margin` which can accept params in pixels or percents as string ( it will be passed to `IntersectionObserver` as `rootMargin` param under the hood, so you can find all formats [here](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)  ). Specifying `margin` as one value ( e.g. `200px` ) in pixels may cover the most common cases, so it's not important to learn other formats:
+In the previous examples, the `load` prop was triggered when the loader became visible on the screen or within the specified container element (depending on the `container` prop). However, there may be situations where you want to start the loading process a bit earlier to provide a more seamless experience for the user. This can be achieved using the `margin` prop, which accepts parameters in pixels or percentages as a string.
+
+The `margin` prop is passed as the `rootMargin` parameter to the underlying `IntersectionObserver`. You can refer to the [Mozilla Developer Network (MDN) documentation](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) for more information on the different formats and options for `rootMargin`.
+
+In most cases, specifying the `margin` as a single value in pixels (e.g., `200px`) will cover the most common scenarios, so there is no need to delve into the details of other format options unless required for specific use cases.
 
 ```html
 <VueEternalLoading :load="load" margin="200px">
@@ -9,6 +13,6 @@ In previous examples `load` prop was triggered when loader was visible on screen
 
 <iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/omf723ve/52/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-In the example above we are created `200px` invisible bounding box around our `VueEternalLoading` component markup. Now `load` prop will be triggered on `200px` earlier  ( like if it was `200px` bigger in all directions ).
+In the example mentioned above, we created an invisible bounding box with a margin of `200px` around our `VueEternalLoading` component markup. This means that the load prop will be triggered `200px` earlier, as if the bounding box were `200px` larger in all directions.
 
-The important thing is that `margin` prop won't affect your layout anyhow unlike `css margin` which pushes content if you will specify it.
+The significant aspect to note is that the `margin` prop does not affect your layout in any way, unlike the **css margin** property, which pushes content if specified. The `margin` prop purely influences the triggering of the `load` prop and the timing of when the loading process starts, ensuring a smoother user experience.

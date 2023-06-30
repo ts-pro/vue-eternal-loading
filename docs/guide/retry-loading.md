@@ -1,6 +1,8 @@
 # Retry loading
 
-Normally if you reached states `no-more`, `no-results` or `error` you have the only choice to restart `vue-eternal-loading` - use `isInitial` prop. It will reset `isFirstLoad` state also, which might be not what you want. If you caught an error, or reached the end and want to retry loading - you can use `retry` method which is available in `no-more`, `no-results` and `error` slots. There is an example of how you can implement `retry` button if you caught an error:
+Typically, when you encounter the **no-more**, **no-results**, or **error** states in **vue-eternal-loading**, your only option to restart the component is by using the `isInitial` prop. However, it's important to note that using the `isInitial` prop will also reset the `isFirstLoad` state, which may not always be desired. In scenarios where you have caught an error or reached the end and want to retry the loading process, you can utilize the `retry` method available within the `#no-more`, `#no-results`, and `#error` slots.
+
+Here's an example demonstrating how you can implement a retry button when an error is caught:
 
 ```html
 <VueEternalLoading :load="load">

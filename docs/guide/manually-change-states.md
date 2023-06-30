@@ -1,8 +1,9 @@
 # Manually Change States
 
-**vue-eternal-loading** allows changing state manually. It can be useful if we have more complex or custom logic than offers `loaded` callback.
 
-Let's write logic where we don't rely on current page size, but we can use other field in the response ( e.g. **total_pages** ). Using those field we know that if current page number equals total pages count - there should be **no-more**.
+In **vue-eternal-loading**, you can manually change the state, which can be useful when you have more complex or custom logic that goes beyond what the `loaded` callback offers.
+
+Let's write a logic where we don't rely on the current page size, but instead, use another field in the response (e.g., **total_pages**). With this field, we can determine that if the current page number equals the total pages count, the state should be changed to **no-more**.
 
 ```js
 function load({ loaded, noMore }) {
@@ -19,7 +20,7 @@ function load({ loaded, noMore }) {
 
 ---
 
-Let's set **no-results** state if we got empty response for the first loading. For this case we need to use second argument in `load` prop method. It's a payload which contains `isFirstLoad` flag.
+To set the **no-results** state if we receive an empty response for the first loading, we can utilize the second argument in the `load` prop method. This argument is a payload that contains the `isFirstLoad` flag. By checking the value of the `isFirstLoad` flag, we can determine whether it is the first load or subsequent loads. In the case of the first load and an empty response, we can manually set the state to **no-results**.
 
 ```js
 function load({ loaded, noMore, noResults }, { isFirstLoad }) {
@@ -41,7 +42,7 @@ function load({ loaded, noMore, noResults }, { isFirstLoad }) {
 
 ---
 
-It's a good practice to handle errors in the app, and show clear feedback to a user. That's why we offer **error** state. You should set this state manually if something bad have happened in your opinion, and we need to show error message to a user. Let's set error state if we get error response from a server, and show custom error message to a user, using `#error` slot.
+It is indeed a good practice to handle errors in an application and provide clear feedback to the user. That's why the **error** state is offered in **vue-eternal-loading**. If something unfavorable occurs and you need to display an error message to the user, you can manually set the state to **error**. This can be done if you receive an error response from the server. Additionally, you can utilize the `#error` slot to show a custom error message to the user. This allows you to have more control over the error handling and display relevant information to the user when an error occurs.
 
 ```html
 <VueEternalLoading :load="load">

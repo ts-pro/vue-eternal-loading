@@ -1,6 +1,6 @@
 # Styling with slots
 
-**vue-eternal-loading** has 4 slots for each state, and you can set custom template for each of them. Default templates are described in the previous section. You can style them as you want using normal css. In case when you need different markup, text, or something more complex, you need to pass your own template to the proper slot:
+**vue-eternal-loading** provides 4 slots for each state, allowing you to set custom templates for each of them. The default templates for each state were described in the previous section. You can style the templates using regular CSS. If you require different markup, text, or more complex customization, you can pass your own template to the appropriate slot.
 
 ```html
 <template>
@@ -43,13 +43,13 @@
 
 ---
 
-Or we can put fancy boostrap spinner:
+Alternatively, you can use a fancy Bootstrap spinner or any other spinner component by providing your own custom template in the loading slot:
 
 <iframe width="100%" height="300" src="//jsfiddle.net/gavrashenko/ajfky3se/20/embedded/result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ---
 
-In the loading slot we have access to `isFirstLoad` data via scoped slot. This data can be used when we want to show different loader for the fist time ( e.g. skeleton loading ).
+In the loading slot, you have access to the `isFirstLoad` data through the scoped slot. This data can be utilized when you want to display a different loader for the first time, such as a skeleton loading animation or any other specific design or content.
 
 ```html
 <template>

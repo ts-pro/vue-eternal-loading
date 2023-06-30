@@ -1,8 +1,10 @@
 # Reset state
 
-Sometimes it's important to reset **vue-eternal-loading** state and `isFirstLoad` to their defaults. For example, when you try to implement filters on your site, and you want to reset pagination if some of your filters has been changed. You can reset component whenever you want, but let's write special reset button to see how it can be implemented.
+Sometimes it is important to reset the state of **vue-eternal-loading** and the `isFirstLoad` flag to their defaults. For instance, when implementing filters on your website, you may want to reset the pagination if any of the filters have been changed. You have the flexibility to reset the component whenever needed, and we can implement a special reset button to demonstrate how it can be done.
 
-To be able to reset component you must pass `isInitial` prop via `v-model` initialized with `true`. When `load` prop will be called, `isInitial` prop will be changed to `false` automatically. If you change this prop to `true` again, it will reset your component to the initial state.
+To enable the reset functionality, you need to pass an `isInitial` prop via `v-model` and initialize it with a value of `true`. When the `load` prop is called, the `isInitial` prop will be automatically changed to `false`. If you set the isInitial prop back to true, it will reset the component to its initial state.
+
+By managing the value of the `isInitial` prop, you can control the reset behavior of the component and trigger a reset whenever necessary.
 
 ```html
 <button @click="reset">Reset</button>
