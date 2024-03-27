@@ -8,7 +8,8 @@
     "import": "./dist/vue-eternal-loading.mjs",
     "default": "./dist/vue-eternal-loading.umd.js",
     "require": "./dist/vue-eternal-loading.js",
-    "node": "./dist/vue-eternal-loading.js"
+    "node": "./dist/vue-eternal-loading.js",
+    "types": "./src/main.ts"
   },
   "sideEffects": false,
   "author": "Oleksandr Havrashenko",
